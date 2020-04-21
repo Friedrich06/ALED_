@@ -1,0 +1,630 @@
+[
+  {
+    "id": "7b295fb.83f99a",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "ef77222c.cf719",
+    "type": "http in",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "url": "setRGB",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 100,
+    "y": 200,
+    "wires": [
+      [
+        "8b5567cc.4e7828",
+        "81ce9455.f833e8",
+        "dcec584b.80ec98",
+        "3ad2fb76.22fe54"
+      ]
+    ]
+  },
+  {
+    "id": "81ce9455.f833e8",
+    "type": "debug",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "x": 330,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "8b5567cc.4e7828",
+    "type": "function",
+    "z": "7b295fb.83f99a",
+    "name": "OK",
+    "func": "msg.payload = \"OK\"\nmsg.statusCodeZahl = 200\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 330,
+    "y": 280,
+    "wires": [
+      [
+        "f9d341e6.979ae"
+      ]
+    ]
+  },
+  {
+    "id": "f9d341e6.979ae",
+    "type": "http response",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "statusCode": "200",
+    "headers": {},
+    "x": 460,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "2e54f2ba.7786de",
+    "type": "http in",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "url": "/setAlarm",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 100,
+    "y": 1040,
+    "wires": [
+      [
+        "525f856b.22920c",
+        "14d3fa38.6e19c6",
+        "c7e63f85.50112"
+      ]
+    ]
+  },
+  {
+    "id": "14d3fa38.6e19c6",
+    "type": "function",
+    "z": "7b295fb.83f99a",
+    "name": "set okayMsg",
+    "func": "msg.payload = \"OK\"\nmsg.statusCode = 200\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 330,
+    "y": 1040,
+    "wires": [
+      [
+        "6f14b4b5.93468c"
+      ]
+    ]
+  },
+  {
+    "id": "6f14b4b5.93468c",
+    "type": "http response",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 470,
+    "y": 1040,
+    "wires": []
+  },
+  {
+    "id": "7349a011.aa5d3",
+    "type": "inject",
+    "z": "7b295fb.83f99a",
+    "name": "off",
+    "topic": "",
+    "payload": "{\"r\":255,\"g\":255,\"b\":255,\"a\":0}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 90,
+    "y": 320,
+    "wires": [
+      [
+        "dcec584b.80ec98"
+      ]
+    ]
+  },
+  {
+    "id": "fbfa75cf.52e438",
+    "type": "inject",
+    "z": "7b295fb.83f99a",
+    "name": "on",
+    "topic": "",
+    "payload": "{\"r\":255,\"g\":255,\"b\":255,\"a\":255}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 90,
+    "y": 280,
+    "wires": [
+      [
+        "dcec584b.80ec98"
+      ]
+    ]
+  },
+  {
+    "id": "3c218faa.885a3",
+    "type": "mqtt out",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "topic": "",
+    "qos": "2",
+    "retain": "false",
+    "broker": "bd2cc84b.f815e8",
+    "x": 530,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "dcec584b.80ec98",
+    "type": "function",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "func": "newMsg = {\n    topic: \"home/ESP_LED/set\",\n    payload:{\n        \"state\": \"ON\",\n        \"brightness\": msg.payload.a,\n        \"color\": {\n            \"r\": msg.payload.r,\n            \"g\": msg.payload.g,\n            \"b\": msg.payload.b\n        },\n        \"transition\": 0.2\n    }\n    \n}\nreturn newMsg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 330,
+    "y": 440,
+    "wires": [
+      [
+        "3c218faa.885a3",
+        "1d6311fc.40097e"
+      ]
+    ]
+  },
+  {
+    "id": "1d6311fc.40097e",
+    "type": "debug",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 540,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "64944d4a.d23424",
+    "type": "inject",
+    "z": "7b295fb.83f99a",
+    "name": "effect: colorfade_slow",
+    "topic": "home/ESP_LED/set",
+    "payload": "{\"state\":\"ON\",\"effect\":\"colorfade_slow\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 140,
+    "y": 600,
+    "wires": [
+      [
+        "3c218faa.885a3"
+      ]
+    ]
+  },
+  {
+    "id": "c213af78.078a9",
+    "type": "inject",
+    "z": "7b295fb.83f99a",
+    "name": "effect: colorfade_fast",
+    "topic": "home/ESP_LED/set",
+    "payload": "{\"state\":\"ON\",\"effect\":\"colorfade_fast\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 140,
+    "y": 640,
+    "wires": [
+      [
+        "3c218faa.885a3"
+      ]
+    ]
+  },
+  {
+    "id": "adaf7c16.a3eb3",
+    "type": "inject",
+    "z": "7b295fb.83f99a",
+    "name": "on",
+    "topic": "home/ESP_LED/set",
+    "payload": "{\"state\":\"ON\",\"brightness\":255,\"white_value\":255,\"color\":{\"r\":255,\"g\":255,\"b\":255},\"transition\":5}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 90,
+    "y": 520,
+    "wires": [
+      [
+        "3c218faa.885a3"
+      ]
+    ]
+  },
+  {
+    "id": "4ac9ec4b.9f47c4",
+    "type": "inject",
+    "z": "7b295fb.83f99a",
+    "name": "off",
+    "topic": "home/ESP_LED/set",
+    "payload": "{\"state\":\"OFF\",\"brightness\":0,\"white_value\":0,\"color\":{\"r\":0,\"g\":0,\"b\":0},\"transition\":5}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 90,
+    "y": 560,
+    "wires": [
+      [
+        "3c218faa.885a3"
+      ]
+    ]
+  },
+  {
+    "id": "f6ae58d5.73e708",
+    "type": "http in",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "url": "/getAlarm",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 100,
+    "y": 820,
+    "wires": [
+      [
+        "fd062c72.51a07"
+      ]
+    ]
+  },
+  {
+    "id": "525f856b.22920c",
+    "type": "json",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "property": "payload",
+    "action": "str",
+    "pretty": false,
+    "x": 310,
+    "y": 1120,
+    "wires": [
+      [
+        "f3035247.ffc8"
+      ]
+    ]
+  },
+  {
+    "id": "58bf5a9d.13be94",
+    "type": "http response",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "statusCode": "200",
+    "headers": {},
+    "x": 720,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "f3035247.ffc8",
+    "type": "file",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "filename": "alarm",
+    "appendNewline": false,
+    "createDir": true,
+    "overwriteFile": "true",
+    "encoding": "utf8",
+    "x": 430,
+    "y": 1120,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "fd062c72.51a07",
+    "type": "file in",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "filename": "alarm",
+    "format": "utf8",
+    "chunk": false,
+    "sendError": false,
+    "encoding": "utf8",
+    "x": 310,
+    "y": 820,
+    "wires": [
+      [
+        "812c1fe0.3af03",
+        "b26f2b35.98ea88"
+      ]
+    ]
+  },
+  {
+    "id": "812c1fe0.3af03",
+    "type": "json",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "property": "payload",
+    "action": "obj",
+    "pretty": false,
+    "x": 510,
+    "y": 820,
+    "wires": [
+      [
+        "67d1185a.5cfc28",
+        "58bf5a9d.13be94"
+      ]
+    ]
+  },
+  {
+    "id": "67d1185a.5cfc28",
+    "type": "debug",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 730,
+    "y": 780,
+    "wires": []
+  },
+  {
+    "id": "c7e63f85.50112",
+    "type": "debug",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 330,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "b32fe05c.2a522",
+    "type": "http in",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "url": "getRGB",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 90,
+    "y": 80,
+    "wires": [
+      [
+        "ee5ab67d.d7dcf8",
+        "ad76d8e7.3f2aa8"
+      ]
+    ]
+  },
+  {
+    "id": "30f56900.ba5a28",
+    "type": "http response",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "statusCode": "200",
+    "headers": {},
+    "x": 560,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "ee5ab67d.d7dcf8",
+    "type": "file in",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "filename": "curColor",
+    "format": "utf8",
+    "chunk": false,
+    "sendError": false,
+    "encoding": "utf8",
+    "x": 260,
+    "y": 80,
+    "wires": [
+      [
+        "89b8e0ae.a4e9a"
+      ]
+    ]
+  },
+  {
+    "id": "89b8e0ae.a4e9a",
+    "type": "json",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "property": "payload",
+    "action": "obj",
+    "pretty": false,
+    "x": 410,
+    "y": 80,
+    "wires": [
+      [
+        "30f56900.ba5a28"
+      ]
+    ]
+  },
+  {
+    "id": "3ad2fb76.22fe54",
+    "type": "json",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "property": "payload",
+    "action": "str",
+    "pretty": false,
+    "x": 330,
+    "y": 360,
+    "wires": [
+      [
+        "352d048c.ea63cc"
+      ]
+    ]
+  },
+  {
+    "id": "352d048c.ea63cc",
+    "type": "file",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "filename": "curColor",
+    "appendNewline": false,
+    "createDir": false,
+    "overwriteFile": "true",
+    "encoding": "utf8",
+    "x": 460,
+    "y": 360,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "4b03fd1a.71c4c4",
+    "type": "comment",
+    "z": "7b295fb.83f99a",
+    "name": "send OK response",
+    "info": "",
+    "x": 370,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "abbb104f.bd0a6",
+    "type": "comment",
+    "z": "7b295fb.83f99a",
+    "name": "save current color",
+    "info": "",
+    "x": 370,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "381cdee9.c30262",
+    "type": "comment",
+    "z": "7b295fb.83f99a",
+    "name": "load curColor and send the value back",
+    "info": "",
+    "x": 350,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "cc907b80.2d0038",
+    "type": "comment",
+    "z": "7b295fb.83f99a",
+    "name": "convert to mqtt Msg",
+    "info": "",
+    "x": 370,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "b26f2b35.98ea88",
+    "type": "debug",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 530,
+    "y": 780,
+    "wires": []
+  },
+  {
+    "id": "ad76d8e7.3f2aa8",
+    "type": "debug",
+    "z": "7b295fb.83f99a",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 270,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "e98d3c80.d8d98",
+    "type": "comment",
+    "z": "7b295fb.83f99a",
+    "name": "debug led control",
+    "info": "",
+    "x": 80,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "cf4b89d2.0750a8",
+    "type": "comment",
+    "z": "7b295fb.83f99a",
+    "name": "send OK response",
+    "info": "",
+    "x": 350,
+    "y": 1000,
+    "wires": []
+  },
+  {
+    "id": "55e46cfa.497b34",
+    "type": "comment",
+    "z": "7b295fb.83f99a",
+    "name": "save current color",
+    "info": "",
+    "x": 350,
+    "y": 1080,
+    "wires": []
+  },
+  {
+    "id": "52713e4c.00443",
+    "type": "comment",
+    "z": "7b295fb.83f99a",
+    "name": "debug phone response",
+    "info": "",
+    "x": 100,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "bd2cc84b.f815e8",
+    "type": "mqtt-broker",
+    "z": "",
+    "name": "",
+    "broker": "127.0.0.1",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": ""
+  }
+]
