@@ -1,12 +1,15 @@
 # ALED Controller
-Es soll die Möglichkeit zur Steuerung eines RGB-LED-Strip geschaffen werden. Die An-steuerung soll zum einen die Möglichkeit zur Auswahl einer Farbe zulassen und zum anderen unterschiedliche Ab- und Auf-Dimmverläufe anbieten. Diese sollen die Möglichkeit schaffen mit einer Lichtuntermalung einzuschlafen bzw. aufzuwachen und die Farben und Farbverläufe so variabel seiner Stimmung anzupassen.
+Es soll die Möglichkeit zur Steuerung eines RGB-LED-Strip geschaffen werden. Die Ansteuerung soll zum einen die Möglichkeit zur Auswahl einer Farbe zulassen und zum anderen unterschiedliche Ab- und Auf-Dimmverläufe anbieten. Diese sollen die Möglichkeit schaffen mit einer Lichtuntermalung einzuschlafen bzw. aufzuwachen und die Farben und Farbverläufe so variabel seiner Stimmung anzupassen.
 
 Verwendete Hardware:
 
 Raspberry Pi 
   Auf diesem Läuft NodeRED.
+  
 ESP8266
   Auf diesem Läuft NodeMCU mit dem WLED Frameswork.
+  
+  
 WS2812B
   LED Strip
 
