@@ -15,14 +15,16 @@ WS2812B:
 
 ## 1. NodeMCU/ESP8266 
 Ein vorkonfiguriertes WLED Paket finden sie unter config_esp8266.
-Weitere Infos fiden sie unter:
+Weitere Infos fiden Sie unter:
 https://github.com/Aircoookie/WLED/wiki
 ## 2.Raspberry Pi
 Die verwendeten  NodeRED Flow finden sie unter config_nodeRED.
+NodeRED finden Sie unter:
+https://github.com/node-red/node-red
 
 ## 3.Raspap (optional)
 Zur einfachen verwaltung der WLAN Schnitstellen des Raspberry wurde ein Raspap Server verwendet.
-Weitere Infos fiden sie unter:
+Weitere Infos finden Sie unter:
 https://github.com/billz/raspap-webgui
 
 
