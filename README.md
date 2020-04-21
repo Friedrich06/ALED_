@@ -3,14 +3,14 @@ Es soll die Möglichkeit zur Steuerung eines RGB-LED-Strip geschaffen werden. Di
 
 Verwendete Hardware:
 
-Raspberry Pi 
+Raspberry Pi: 
   Auf diesem Läuft NodeRED.
   
-ESP8266
+ESP8266:
   Auf diesem Läuft NodeMCU mit dem WLED Frameswork.
   
   
-WS2812B
+WS2812B:
   LED Strip
 
 ## 1. NodeMCU/ESP8266 
