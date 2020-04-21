@@ -17,7 +17,7 @@ https://github.com/Aircoookie/WLED/wiki
 ## 2.Raspberry Pi
 Die verwendeten  NodeRED Flow finden sie unter config_nodeRED.
 
-## 3.Raspap (otional)
+## 3.Raspap (optional)
 Zur einfachen verwaltung der WLAN Schnitstellen des Raspberry wurde ein Raspap Server verwendet.
 Weitere Infos fiden sie unter:
 https://github.com/billz/raspap-webgui
