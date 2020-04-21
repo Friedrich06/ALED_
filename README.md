@@ -1,6 +1,6 @@
 # ALED Controller
 Es soll die Möglichkeit zur Steuerung eines RGB-LED-Strip geschaffen werden. Die Ansteuerung soll zum einen die Möglichkeit zur Auswahl einer Farbe zulassen und zum anderen unterschiedliche Ab- und Auf-Dimmverläufe anbieten. Diese sollen die Möglichkeit schaffen mit einer Lichtuntermalung einzuschlafen bzw. aufzuwachen und die Farben und Farbverläufe so variabel seiner Stimmung anzupassen.
-
+![ALED](https://github.com/Friedrich06/ALED_/blob/master/doku/ALED-flussdiagramm.jpg)
 Verwendete Hardware:
 
 Raspberry Pi: 
