@@ -1,30 +1,25 @@
 # ALED Controller
-Besteht aus: asd
-## 1. NodeMCU 
-genutz wird hier das Wled Framework
+Es soll die Möglichkeit zur Steuerung eines RGB-LED-Strip geschaffen werden. Die An-steuerung soll zum einen die Möglichkeit zur Auswahl einer Farbe zulassen und zum anderen unterschiedliche Ab- und Auf-Dimmverläufe anbieten. Diese sollen die Möglichkeit schaffen mit einer Lichtuntermalung einzuschlafen bzw. aufzuwachen und die Farben und Farbverläufe so variabel seiner Stimmung anzupassen.
 
-## 2.LED Strip
+Verwendete Hardware:
 
-## 3.nodeRED
-unter Debian auf einem Raspberry Pi
+Raspberry Pi 
+  Auf diesem Läuft NodeRED.
+ESP8266
+  Auf diesem Läuft NodeMCU mit dem WLED Frameswork.
+WS2812B
+  LED Strip
 
-## 4.wlan AP
-serverdienst für die kommunikation
+## 1. NodeMCU/ESP8266 
+Ein vorkonfiguriertes WLED Paket finden sie unter config_esp8266.
+Weitere Infos fiden sie unter:
+https://github.com/Aircoookie/WLED/wiki
+## 2.Raspberry Pi
+Die verwendeten  NodeRED Flow finden sie unter config_nodeRED.
 
-## 5.flutter App
-
-In der Flutter Application.
-Können befehle an den LED Strip gesendet werden.
-Diese ist möglich indem die App einen http request an das auf dem Raspberry laufende nodeRed sendet.
-Das NodeRED kommuniziert mit dem Wled Framework auf dem NodeMCU.
-Der NodeMCU empfängt seine befehle per MQTT.
+## 3.Raspap (otional)
+Zur einfachen verwaltung der WLAN Schnitstellen des Raspberry wurde ein Raspap Server verwendet.
+Weitere Infos fiden sie unter:
+https://github.com/billz/raspap-webgui
 
 
-
-Homescreen
-IP Verbdingung eingeben
-Port eingeben
-Verbindung aufbauen
-Wecker starten 
-Sleep 
-Effekt auswählen
